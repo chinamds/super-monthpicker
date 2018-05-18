@@ -314,7 +314,7 @@
             }
         });
 
-        if ( typeof get !== undefined) {
+        if (typeof get !== undefined) {
             return get;
         } else {
             return element;

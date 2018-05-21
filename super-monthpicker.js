@@ -35,61 +35,72 @@
 
     SuperMonthPicker.prototype = {
         check : function () {
-            var el = this.$elementSuperMonthPicker;
-
+            var el = this.$elementSuperMonthPicker,
+                year = el.find('.SMPContent .SMPYear').html(),
+                yearEnd = el.find('.SMPContentEnd .SMPYear').html();
             el.find('.SMPChangeMonth div').removeClass('disabled');
             el.find('.SMPChangeMonth div').removeClass('active');
-
-            if (el.find('.SMPContent .SMPYear').html() == startSelectYear) {
-                el.find('.SMPContent .SMPChangeMonth div[data-val="'+startSelectMonth+'"]').addClass('active');
-            }
-            if (el.find('.SMPContentEnd .SMPYear').html() == endSelectYear) {
-                el.find('.SMPContentEnd .SMPChangeMonth div[data-val="'+endSelectMonth+'"]').addClass('active');
-            }
 
             maxMonth = Number(this.options.max.split('-')[0]);
             maxYear = Number(this.options.max.split('-')[1]);
             minMonth = Number(this.options.min.split('-')[0]);
             minYear = Number(this.options.min.split('-')[1]);
 
-            if (endYear >= maxYear) {
-                if (endMonth > maxMonth) {
-                    endYear = maxYear;
-                    endMonth = maxMonth;
-                }
+            if (year == startSelectYear) {
+                el.find('.SMPContent .SMPChangeMonth div[data-val="'+startSelectMonth+'"]').addClass('active');
             }
 
-            if (startYear <= minYear) {
-                if (startMonth < minMonth) {
-                    startYear = minYear;
-                    startMonth = minMonth;
-                }
+            if (yearEnd == endSelectYear) {
+                el.find('.SMPContentEnd .SMPChangeMonth div[data-val="'+endSelectMonth+'"]').addClass('active');
             }
 
-            if (this.options.max != '') {
-                if (startYear == maxYear && maxMonth != 12) {
-                    for (var i = maxMonth+1; i <= 12; i++) {
+            if (year == minYear) {
+                for (var i = 1; i <= 12; i++) {
+                    if (i < minMonth) {
                         el.find('.SMPContent').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
                     }
                 }
+            }
 
-                if (endYear == maxYear && maxMonth != 12) {
-                    for (var i = maxMonth+1; i <= 12; i++) {
-                        el.find('.SMPContentEnd').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
+            if (year == maxYear) {
+                for (var i = 1; i <= 12; i++) {
+                    if (i > maxMonth) {
+                        el.find('.SMPContent').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
                     }
                 }
             }
 
-            if (this.options.min != '') {
-                if (startYear == minYear && minMonth != 1) {
-                    for (var i = minMonth-1; i >= 1; i--) {
-                        el.find('.SMPContent').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
+            if (this.options.endDate != '') {
+                if (yearEnd == minYear) {
+                    for (var i = 1; i <= 12; i++) {
+                        if (i < minMonth) {
+                            el.find('.SMPContentEnd').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
+                        }
                     }
                 }
 
-                if (endYear == minYear && minMonth != 1) {
-                    for (var i = minMonth-1; i >= 1; i--) {
-                        el.find('.SMPContentEnd').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
+                if (yearEnd == maxYear) {
+                    for (var i = 1; i <= 12; i++) {
+                        if (i > maxMonth) {
+                            el.find('.SMPContentEnd').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
+                        }
+                    }
+                }
+
+                // Disabled all 
+                if (year >= endSelectYear) {
+                    for (var i = 1; i <= 12; i++) {
+                        if (i >= endSelectMonth || year > endSelectYear) {
+                            el.find('.SMPContent').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
+                        }
+                    }
+                }
+
+                if (yearEnd <= startSelectYear) {
+                    for (var i = 1; i <= 12; i++) {
+                        if (i <= startSelectMonth || yearEnd < startSelectYear) {
+                            el.find('.SMPContentEnd').find('.SMPChangeMonth div[data-val="'+i+'"]').addClass('disabled');
+                        }
                     }
                 }
             }
@@ -187,15 +198,7 @@
             this.$element.before(this.$elementSuperMonthPicker);
             this.$element.remove();
 
-            var SMPContent = this.$elementSuperMonthPicker.find('.SMPContent'),
-                SMPContentEnd = this.$elementSuperMonthPicker.find('.SMPContentEnd');
-
-            if (this.options.endDate != '') {
-                SMPContentEnd.find('.SMPChangeMonth div[data-val="'+endMonth+'"]').addClass('active');
-                this.$elementSuperMonthPicker.find('.SMPContainer').css('width', '430px');
-            } else {
-                this.$elementSuperMonthPicker.find('.SMPContainer').css('width', 'auto');
-            }
+            var SMPContent = this.$elementSuperMonthPicker.find('.SMPContent');
 
             this.check();
 
@@ -210,22 +213,20 @@
             });
 
             SMPContent.find('.SMPLeft').on('click', function (e) {
-                startSelectYear--;
-                if (Number(_self.options.min.split('-')[1]) <= startSelectYear || _self.options.min == '') {
-                    SMPContent.find('.SMPYear').html(startSelectYear);
+                var year = Number(SMPContent.find('.SMPYear').html());
+                year--;
+                if (minYear <= year || _self.options.min == '') {
+                    SMPContent.find('.SMPYear').html(year);
                     _self.check();
-                } else {
-                    startSelectYear++;
                 }
             });
 
             SMPContent.find('.SMPRight').on('click', function (e) {
-                startSelectYear++;
-                if (Number(_self.options.max.split('-')[1]) >= startSelectYear || _self.options.max == '') {
-                    SMPContent.find('.SMPYear').html(startSelectYear);
+                var year = Number(SMPContent.find('.SMPYear').html());
+                year++;
+                if (maxYear >= year || _self.options.max == '') {
+                    SMPContent.find('.SMPYear').html(year);
                     _self.check();
-                } else {
-                    startSelectYear--;
                 }
             });
 
@@ -238,58 +239,57 @@
                 startSelectMonth = $(this).attr('data-val');
                 startSelectYear = SMPContent.find('.SMPYear').html();
 
-                if (startSelectYear >= endSelectYear && startSelectMonth >= endSelectMonth) {
-                    endSelectMonth = startSelectMonth == 12 ? 1 : startSelectMonth+1;
+                _self.check();
+            });
 
-                    if (startSelectYear > endSelectYear) {
-                        endSelectYear = endSelectMonth == 1 ? startSelectYear + 1 : startSelectYear;
+            if (this.options.endDate != '') {
+                var SMPContentEnd = this.$elementSuperMonthPicker.find('.SMPContentEnd');
+
+                SMPContentEnd.find('.SMPChangeMonth div[data-val="'+endMonth+'"]').addClass('active');
+                this.$elementSuperMonthPicker.find('.SMPContainer').css('width', '430px');
+                
+                SMPContentEnd.find('.SMPLeft').on('click', function (e) {
+                    var year = Number(SMPContentEnd.find('.SMPYear').html());
+                    year--;
+                    if (minYear <= year || _self.options.min == '') {
+                        SMPContentEnd.find('.SMPYear').html(year);
+                        _self.check();
                     }
+                });
 
-                    if (SMPContentEnd.find('.SMPYear').html() == endSelectYear) {
-                        SMPContentEnd.find('.SMPChangeMonth div').removeClass('active');
-                        SMPContentEnd.find('.SMPChangeMonth div[data-val="'+endSelectMonth+'"]').addClass('active');
+                SMPContentEnd.find('.SMPRight').on('click', function (e) {
+                    var year = Number(SMPContentEnd.find('.SMPYear').html());
+                    year++;
+                    if (maxYear >= year || _self.options.max == '') {
+                        SMPContentEnd.find('.SMPYear').html(year);
+                        _self.check();
                     }
-                }
+                });
 
-                this.check();
-            });
+                SMPContentEnd.find('.SMPChangeMonth div').on('click', function (e) {
+                    if ($(this).hasClass('disabled')) {
+                        return false;
+                    }
+                    SMPContentEnd.find('.SMPChangeMonth div').removeClass('active');
+                    $(this).addClass('active');
+                    endSelectMonth = $(this).attr('data-val');
+                    endSelectYear = SMPContentEnd.find('.SMPYear').html();
 
-            SMPContentEnd.find('.SMPLeft').on('click', function (e) {
-                endYear--;
-                if (Number(_self.options.min.split('-')[1]) <= endYear || _self.options.min == '') {
-                    SMPContentEnd.find('.SMPYear').html(endYear);
-                    _self.check(SMPContentEnd);
-                } else {
-                    endYear++;
-                }
-            });
-
-            SMPContentEnd.find('.SMPRight').on('click', function (e) {
-                endYear++;
-                if (Number(_self.options.max.split('-')[1]) >= endYear || _self.options.max == '') {
-                    SMPContentEnd.find('.SMPYear').html(endYear);
-                    _self.check(SMPContentEnd);
-                } else {
-                    endYear--;
-                }
-            });
-
-            SMPContentEnd.find('.SMPChangeMonth div').on('click', function (e) {
-                if ($(this).hasClass('disabled')) {
-                    return false;
-                }
-                SMPContentEnd.find('.SMPChangeMonth div').removeClass('active');
-                $(this).addClass('active');
-                endMonth = $(this).attr('data-val');
-            });
+                    _self.check();
+                });
+            } else {
+                this.$elementSuperMonthPicker.find('.SMPContainer').css('width', 'auto');
+            }
 
             _self.$elementSuperMonthPicker.find('.btnOk').on('click', function (e) {
-                _self.$elementSuperMonthPicker.find('.SMPField').html((month < 10 ? '0':'')+month+'/'+year);
-                _self.$elementSuperMonthPicker.find('.SMPContent').hide();
+                var val = (startSelectMonth < 10 ? '0':'')+startSelectMonth+'/'+startSelectYear+(_self.options.endDate != '' ? ' ~ '+(endSelectMonth < 10 ? '0':'')+endSelectMonth+'/'+endSelectYear:'');
+                _self.$elementSuperMonthPicker.find('.SMPField').html(val);
+                _self.$elementSuperMonthPicker.val(val);
+                _self.$elementSuperMonthPicker.find('.SMPContainer').hide();
             });
 
             _self.$elementSuperMonthPicker.find('.btnCancel').on('click', function (e) {
-                _self.$elementSuperMonthPicker.find('.SMPContent').hide();
+                _self.$elementSuperMonthPicker.find('.SMPContainer').hide();
             });
         }
     };

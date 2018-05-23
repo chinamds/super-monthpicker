@@ -9,11 +9,11 @@ body {
     color: #333;
 }
 
-.SuperMonthPicker input {
+/*.SuperMonthPicker input {
     opacity: 0;
     position: fixed;
     top: -100%;
-}
+}*/
 
 .SuperMonthPicker .SMPContainer {
     position: absolute;
@@ -34,14 +34,20 @@ body {
     margin-left: 25px;
 }
 .SuperMonthPicker .SMPField {
-    padding: 7px 12px;
-    font-size: 0.9em;
-    border: 1px solid #ccc;
-    width: 200px;
-    min-height: 30px;
+    width: 100%;
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    height: 100%;
 }
-
+.SMPDivider {
+    display: inline-block;
+    background: linear-gradient(#fff, #dedede, #fff);
+    width: 1px;
+    height: 200px;
+    position: absolute;
+    margin-left: 10px;
+}
 .SMPChangeYear::after,
 .SMPChangeMonth::after {
     display: block;
@@ -126,6 +132,12 @@ body {
     font-size: 0.9em;
     float: right;
     margin-left: 5px;
+    cursor: pointer;
+}
+
+.SMPButtons button:hover {
+    background: #299d29;
+    border: 1px solid #248d24;
 }
 
 .SMPChangeYear .SMPLeft .arrow,
@@ -136,22 +148,32 @@ body {
     padding: 3px;
 }
 
-.arrow.right {
+.SMPChangeYear .SMPLeft.disabled,
+.SMPChangeYear .SMPRight.disabled {
+    opacity: 0.2;
+    cursor: default;
+}
+
+.SMPChangeYear .SMPLeft .arrow.right,
+.SMPChangeYear .SMPRight .arrow.right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
 
-.arrow.left {
+.SMPChangeYear .SMPLeft .arrow.left,
+.SMPChangeYear .SMPRight .arrow.left {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
 
-.arrow.up {
+.SMPChangeYear .SMPLeft .arrow.up,
+.SMPChangeYear .SMPRight .arrow.up {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
 }
 
-.arrow.down {
+.SMPChangeYear .SMPLeft .arrow.down,
+.SMPChangeYear .SMPRight .arrow.down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }

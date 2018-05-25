@@ -34,6 +34,104 @@
         startSelectMonth: '',
         endSelectYear: '',
         endSelectMonth: '',
+        currentStartMonth: '',
+        currentStartYear: '',
+        currentEndMonth: '',
+        currentEndYear: '',
+
+        // 'max' : '',
+        // 'min' : '',
+        // 'startDate' : new Date(),
+        // 'endDate' : '',
+        // 'theme': 'default',
+        // 'btnOk' : 'Ok',
+        // 'btnCancel' : 'Cancel',
+        // 'onSelectMonth': function () {},
+        // 'onSelectYear': function () {},
+        // 'onOpen': function () {},
+        // 'onClose': function () {},
+        // 'onChose': function () {}
+
+        monthsName : function (value) {
+            if (value !== undefined) {
+                var _self = this;
+                this.options.monthsName = value;
+                this.$elementSuperMonthPicker.find('.SMPContainer .SMPChangeMonth').each(function () {
+                    $(this).find('div').each(function (i) {
+                        $(this).html(_self.options.monthsName[i].slice(0, 3));
+                    });
+                });
+            } else {
+                return this.options.monthsName;
+            }
+        },
+
+        min : function (value) {
+            if (value !== undefined) {
+                this.options.min = value;
+                if (typeof this.options.min == 'object') {
+                    this.minMonth = this.options.min.getMonth()+1;
+                    this.minYear = this.options.min.getFullYear();
+                } else {
+                    this.minMonth = Number(this.options.min.split('-')[0]);
+                    this.minYear = Number(this.options.min.split('-')[1]);
+                }
+                this.check();
+            } else {
+                return this.options.min;
+            }
+        },
+
+        max : function (value) {
+            if (value !== undefined) {
+                this.options.max = value;
+                if (typeof this.options.max == 'object') {
+                    this.maxMonth = this.options.max.getMonth()+1;
+                    this.maxYear = this.options.max.getFullYear();
+                } else {
+                    this.maxMonth = Number(this.options.max.split('-')[0]);
+                    this.maxYear = Number(this.options.max.split('-')[1]);
+                }
+                this.check();
+            } else {
+                return this.options.max;
+            }
+        },
+
+        endDate : function (value) {
+            if (value !== undefined) {
+                this.options.endDate = value;
+
+                if (typeof this.options.endDate == 'object') {
+                    this.endMonth = this.options.endDate.getMonth()+1;
+                    this.endYear = this.options.endDate.getFullYear();
+                } else {
+                    this.endMonth = Number(this.options.endDate.split('-')[0]);
+                    this.endYear = Number(this.options.endDate.split('-')[1]);
+                }
+
+                this.endSelectMonth = this.endMonth;
+                this.endSelectYear = this.endYear;
+                this.currentEndMonth = this.endMonth;
+                this.currentEndYear = this.endYear;
+                
+
+                if (this.options.endDate != '') {
+                    this.$element.val((this.startSelectMonth < 10 ? '0':'')+this.startSelectMonth+'/'+this.startSelectYear+' ~ '+(this.endSelectMonth < 10 ? '0':'')+this.endSelectMonth+'/'+this.endSelectYear);
+                    if (this.$elementSuperMonthPicker.find('.SMPContainer .SMPContentEnd').length == 0) {
+                        this.$elementSuperMonthPicker.find('.SMPContainer .SMPContent').after($(this.htmlContentEnd()));
+                        this.eventsContentEnd();
+                        this.check();
+                    }
+                } else {
+                    this.$element.val((this.startSelectMonth < 10 ? '0':'')+this.startSelectMonth+'/'+this.startSelectYear);
+                    this.$elementSuperMonthPicker.find('.SMPContainer').removeAttr('style');
+                    this.$elementSuperMonthPicker.find('.SMPContainer .SMPContentEnd, .SMPContainer .SMPDivider').remove();
+                }
+            } else {
+                return this.options.min;
+            }
+        },
 
         check : function () {
             var el = this.$elementSuperMonthPicker,
@@ -147,6 +245,82 @@
             this.check();
         },
 
+        htmlContentEnd : function () {
+            return '<div class="SMPDivider"></div>'+
+                   '<div class="SMPContentEnd">'+
+                   '  <div class="SMPChangeYear">'+
+                   '    <div class="SMPYear">'+this.endSelectYear+'</div>'+
+                   '    <div class="SMPLeft"><i class="arrow left"></i></div>'+
+                   '    <div class="SMPRight"><i class="arrow right"></i></div>'+
+                   '  </div>'+
+                   '  <div class="SMPChangeMonth">'+
+                   '    <div data-val="1">'+this.options.monthsName[0].slice(0, 3)+'</div>'+
+                   '    <div data-val="2">'+this.options.monthsName[1].slice(0, 3)+'</div>'+
+                   '    <div data-val="3">'+this.options.monthsName[2].slice(0, 3)+'</div>'+
+                   '    <div data-val="4">'+this.options.monthsName[3].slice(0, 3)+'</div>'+
+                   '    <div data-val="5">'+this.options.monthsName[4].slice(0, 3)+'</div>'+
+                   '    <div data-val="6">'+this.options.monthsName[5].slice(0, 3)+'</div>'+
+                   '    <div data-val="7">'+this.options.monthsName[6].slice(0, 3)+'</div>'+
+                   '    <div data-val="8">'+this.options.monthsName[7].slice(0, 3)+'</div>'+
+                   '    <div data-val="9">'+this.options.monthsName[8].slice(0, 3)+'</div>'+
+                   '    <div data-val="10">'+this.options.monthsName[9].slice(0, 3)+'</div>'+
+                   '    <div data-val="11">'+this.options.monthsName[10].slice(0, 3)+'</div>'+
+                   '    <div data-val="12">'+this.options.monthsName[11].slice(0, 3)+'</div>'+
+                   '  </div>'+
+                   '</div>';
+        },
+
+        eventsContentEnd : function () {
+            var SMPContentEnd = this.$elementSuperMonthPicker.find('.SMPContentEnd'),
+                _self = this;
+
+                this.checkNavigator(SMPContentEnd, this.endSelectYear);
+
+                SMPContentEnd.find('.SMPChangeMonth div[data-val="'+this.endMonth+'"]').addClass('active');
+                this.$elementSuperMonthPicker.find('.SMPContainer').css('width', '430px');
+                
+                SMPContentEnd.find('.SMPLeft').on('click', function (e) {
+                    var year = Number(SMPContentEnd.find('.SMPYear').html());
+                    year--;
+                    if (_self.minYear <= year || _self.options.min == '') {
+                        SMPContentEnd.find('.SMPYear').html(year);
+                        _self.check();
+                        _self.checkNavigator(SMPContentEnd, year);
+                    }
+                    if (typeof _self.options.onSelectYear == 'function') {
+                        _self.options.onSelectYear();
+                    }
+                });
+
+                SMPContentEnd.find('.SMPRight').on('click', function (e) {
+                    var year = Number(SMPContentEnd.find('.SMPYear').html());
+                    year++;
+                    if (_self.maxYear >= year || _self.options.max == '') {
+                        SMPContentEnd.find('.SMPYear').html(year);
+                        _self.check();
+                        _self.checkNavigator(SMPContentEnd, year);
+                    }
+                    if (typeof _self.options.onSelectYear == 'function') {
+                        _self.options.onSelectYear();
+                    }
+                });
+
+                SMPContentEnd.find('.SMPChangeMonth div').on('click', function (e) {
+                    if ($(this).hasClass('disabled')) {
+                        return false;
+                    }
+                    SMPContentEnd.find('.SMPChangeMonth div').removeClass('active');
+                    $(this).addClass('active');
+                    _self.endSelectMonth = $(this).attr('data-val');
+                    _self.endSelectYear = SMPContentEnd.find('.SMPYear').html();
+
+                    _self.check();
+                    if (typeof _self.options.onSelectMonth == 'function') {
+                        _self.options.onSelectMonth();
+                    }
+                });
+        },
+
         constructor : function() {
             var _self = this,
                 clone = this.$element.clone(),
@@ -211,7 +385,6 @@
             }
 
             if (this.options.max != '') {
-                console.log(typeof this.options.max);
                 if (typeof this.options.max == 'object') {
                     this.maxMonth = this.options.max.getMonth()+1;
                     this.maxYear = this.options.max.getFullYear();
@@ -250,28 +423,7 @@
                 '      </div>'+
                 '    </div>'+
                 (this.options.endDate != '' ? 
-                    '    <div class="SMPDivider"></div>'+
-                    '    <div class="SMPContentEnd">'+
-                    '      <div class="SMPChangeYear">'+
-                    '        <div class="SMPYear">'+this.endSelectYear+'</div>'+
-                    '        <div class="SMPLeft"><i class="arrow left"></i></div>'+
-                    '        <div class="SMPRight"><i class="arrow right"></i></div>'+
-                    '      </div>'+
-                    '      <div class="SMPChangeMonth">'+
-                    '        <div data-val="1">'+this.options.monthsName[0].slice(0, 3)+'</div>'+
-                    '        <div data-val="2">'+this.options.monthsName[1].slice(0, 3)+'</div>'+
-                    '        <div data-val="3">'+this.options.monthsName[2].slice(0, 3)+'</div>'+
-                    '        <div data-val="4">'+this.options.monthsName[3].slice(0, 3)+'</div>'+
-                    '        <div data-val="5">'+this.options.monthsName[4].slice(0, 3)+'</div>'+
-                    '        <div data-val="6">'+this.options.monthsName[5].slice(0, 3)+'</div>'+
-                    '        <div data-val="7">'+this.options.monthsName[6].slice(0, 3)+'</div>'+
-                    '        <div data-val="8">'+this.options.monthsName[7].slice(0, 3)+'</div>'+
-                    '        <div data-val="9">'+this.options.monthsName[8].slice(0, 3)+'</div>'+
-                    '        <div data-val="10">'+this.options.monthsName[9].slice(0, 3)+'</div>'+
-                    '        <div data-val="11">'+this.options.monthsName[10].slice(0, 3)+'</div>'+
-                    '        <div data-val="12">'+this.options.monthsName[11].slice(0, 3)+'</div>'+
-                    '      </div>'+
-                    '    </div>':'')+
+                    this.htmlContentEnd() :'')+
                 '    <div class="SMPButtons">'+
                 '      <button type="button" class="btnCancel">'+this.options.btnCancel+'</button>'+
                 '      <button type="button" class="btnOk">'+this.options.btnOk+'</button>'+
@@ -280,7 +432,9 @@
                 '</div>').prepend(clone);
 
             this.$element.before(this.$elementSuperMonthPicker);
+            clone.data('sMonthPicker', this.$element.data('sMonthPicker'))
             this.$element.remove();
+            this.$element = clone;
 
             var SMPContent = this.$elementSuperMonthPicker.find('.SMPContent');
 
@@ -340,52 +494,7 @@
             });
 
             if (this.options.endDate != '') {
-                var SMPContentEnd = this.$elementSuperMonthPicker.find('.SMPContentEnd');
-                _self.checkNavigator(SMPContentEnd, this.endSelectYear);
-
-                SMPContentEnd.find('.SMPChangeMonth div[data-val="'+this.endMonth+'"]').addClass('active');
-                this.$elementSuperMonthPicker.find('.SMPContainer').css('width', '430px');
-                
-                SMPContentEnd.find('.SMPLeft').on('click', function (e) {
-                    var year = Number(SMPContentEnd.find('.SMPYear').html());
-                    year--;
-                    if (_self.minYear <= year || _self.options.min == '') {
-                        SMPContentEnd.find('.SMPYear').html(year);
-                        _self.check();
-                        _self.checkNavigator(SMPContentEnd, year);
-                    }
-                    if (typeof _self.options.onSelectYear == 'function') {
-                        _self.options.onSelectYear();
-                    }
-                });
-
-                SMPContentEnd.find('.SMPRight').on('click', function (e) {
-                    var year = Number(SMPContentEnd.find('.SMPYear').html());
-                    year++;
-                    if (_self.maxYear >= year || _self.options.max == '') {
-                        SMPContentEnd.find('.SMPYear').html(year);
-                        _self.check();
-                        _self.checkNavigator(SMPContentEnd, year);
-                    }
-                    if (typeof _self.options.onSelectYear == 'function') {
-                        _self.options.onSelectYear();
-                    }
-                });
-
-                SMPContentEnd.find('.SMPChangeMonth div').on('click', function (e) {
-                    if ($(this).hasClass('disabled')) {
-                        return false;
-                    }
-                    SMPContentEnd.find('.SMPChangeMonth div').removeClass('active');
-                    $(this).addClass('active');
-                    _self.endSelectMonth = $(this).attr('data-val');
-                    _self.endSelectYear = SMPContentEnd.find('.SMPYear').html();
-
-                    _self.check();
-                    if (typeof _self.options.onSelectMonth == 'function') {
-                        _self.options.onSelectMonth();
-                    }
-                });
+                this.eventsContentEnd();
             } else {
                 this.$elementSuperMonthPicker.find('.SMPContainer').css('width', 'auto');
             }
@@ -393,7 +502,7 @@
             _self.$elementSuperMonthPicker.find('.btnOk').on('click', function (e) {
                 var val = (_self.startSelectMonth < 10 ? '0':'')+_self.startSelectMonth+'/'+_self.startSelectYear+(_self.options.endDate != '' ? ' ~ '+(_self.endSelectMonth < 10 ? '0':'')+_self.endSelectMonth+'/'+_self.endSelectYear:'');
                 //_self.$elementSuperMonthPicker.find('.SMPField').html(val);
-                clone.val(val);
+                _self.$element.val(val);
 
                 _self.currentStartMonth = _self.startSelectMonth;
                 _self.currentStartYear = _self.startSelectYear;
@@ -419,23 +528,19 @@
         }
     };
 
-    var old = $.fn.SuperMonthPicker;
+    var old = $.fn.sMonthPicker;
 
     $.fn.sMonthPicker = function(option, value) {
         var get = '', element = this.each(function() {
-            if ($(this).attr('type') === 'text') {
-                var $this = $(this), data = $this.data('sMonthPicker'), options = $.extend({}, $.fn.sMonthPicker.defaults, option, typeof option === 'object' && option);
+            var $this = $(this), data = $this.data('sMonthPicker'), options = $.extend({}, $.fn.sMonthPicker.defaults, option, typeof option === 'object' && option);
 
-                if (!data) {
-                    $this.data('sMonthPicker', ( data = new SuperMonthPicker(this, options)));
-                    data.constructor();
-                }
+            if (!data) {
+                $this.data('sMonthPicker', ( data = new SuperMonthPicker(this, options)));
+                data.constructor();
+            }
 
-                if ( typeof option === 'string') {
-                    get = data[option](value);
-                }
-            } else {
-                console.error("It's element not a text field");
+            if (typeof option === 'string') {
+                get = data[option](value);
             }
         });
 
@@ -450,7 +555,7 @@
         'monthsName' : ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
         'max' : '',
         'min' : '',
-        'startDate' : '',
+        'startDate' : new Date(),
         'endDate' : '',
         'theme': 'default',
         'btnOk' : 'Ok',
@@ -463,7 +568,7 @@
     };
 
     $.fn.sMonthPicker.noConflict = function() {
-        $.fn.SuperMonthPicker = old;
+        $.fn.sMonthPicker = old;
         return this;
     };
 

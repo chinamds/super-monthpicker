@@ -10,12 +10,166 @@
         <link rel="stylesheet" href="super-monthpicker.css">
 
         <title>Page Test</title>
+        <style type="text/css">
+            label {
+                display: block;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hello, world!</h1>
-        <input type="text" id="date">
-        <input type="text" id="date2">
-        <input type="text" id="date3">
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Page Test</h1>
+                <p class="lead">This is a simple test page</p>
+                <hr class="my-4">
+                <p>To access the plugin plugin click the button below.</p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Web documentation</a>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <h2>Options</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Default</label>
+                            <input class="form-control" type="text" id="date">
+                        </div>
+                        <div class="form-group">
+                            <label>monthsName</label>
+                            <input class="form-control" type="text" id="date2">
+                        </div>
+                        <div class="form-group">
+                            <label>max</label>
+                            <input class="form-control" type="text" id="date3">
+                        </div>
+                        <div class="form-group">
+                            <label>min</label>
+                            <input class="form-control" type="text" id="date4">
+                        </div>
+                        <div class="form-group">
+                            <label>startDate</label>
+                            <input class="form-control" type="text" id="date5">
+                        </div>
+                        <div class="form-group">
+                            <label>endDate</label>
+                            <input class="form-control" type="text" id="date6">
+                        </div>
+                        <div class="form-group">
+                            <label>btnOk</label>
+                            <input class="form-control" type="text" id="date7">
+                        </div>
+                        <div class="form-group">
+                            <label>btnCancel</label>
+                            <input class="form-control" type="text" id="date8">
+                        </div>
+                        <div class="form-group">
+                            <label>changeYear</label>
+                            <input class="form-control" type="text" id="date9">
+                        </div>
+                        <div class="form-group">
+                            <label>changeMonth</label>
+                            <input class="form-control" type="text" id="date10">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <h2>Events</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>onSelectMonth</label>
+                            <input class="form-control" type="text" id="date11">
+                        </div>
+                        <div class="form-group">
+                            <label>onSelectYear</label>
+                            <input class="form-control" type="text" id="date12">
+                        </div>
+                        <div class="form-group">
+                            <label>onOpen</label>
+                            <input class="form-control" type="text" id="date13">
+                        </div>
+                        <div class="form-group">
+                            <label>onClose</label>
+                            <input class="form-control" type="text" id="date14">
+                        </div>
+                        <div class="form-group">
+                            <label>onChoose</label>
+                            <input class="form-control" type="text" id="date15">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <h2>Stress test</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Max = Min</label>
+                            <input class="form-control" type="text" id="date16">
+                        </div>
+                        <div class="form-group">
+                            <label>Max > Min</label>
+                            <input class="form-control" type="text" id="date17">
+                        </div>
+                        <div class="form-group">
+                            <label>Max < Min (F12 view error)</label>
+                            <input class="form-control" type="text" id="date18">
+                        </div>
+                        <div class="form-group">
+                            <label>startDate < min (F12 view error)</label>
+                            <input class="form-control" type="text" id="date19">
+                        </div>
+                        <div class="form-group">
+                            <label>startDate > max (F12 view error)</label>
+                            <input class="form-control" type="text" id="date20">
+                        </div>
+                        <div class="form-group">
+                            <label>endDate > max (F12 view error)</label>
+                            <input class="form-control" type="text" id="date21">
+                        </div>
+                        <div class="form-group">
+                            <label>startDate > endDate (F12 view error)</label>
+                            <input class="form-control" type="text" id="date22">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <h2>Methods in action</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Max = Min</label>
+                            <input class="form-control" type="text" id="date16">
+                        </div>
+                        <div class="form-group">
+                            <label>Max > Min</label>
+                            <input class="form-control" type="text" id="date17">
+                        </div>
+                        <div class="form-group">
+                            <label>Max < Min (F12 view error)</label>
+                            <input class="form-control" type="text" id="date18">
+                        </div>
+                        <div class="form-group">
+                            <label>startDate < min (F12 view error)</label>
+                            <input class="form-control" type="text" id="date19">
+                        </div>
+                        <div class="form-group">
+                            <label>startDate > max (F12 view error)</label>
+                            <input class="form-control" type="text" id="date20">
+                        </div>
+                        <div class="form-group">
+                            <label>endDate > max (F12 view error)</label>
+                            <input class="form-control" type="text" id="date21">
+                        </div>
+                        <div class="form-group">
+                            <label>startDate > endDate (F12 view error)</label>
+                            <input class="form-control" type="text" id="date22">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -24,20 +178,107 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script type="text/javascript" src="super-monthpicker.js"></script>
         <script type="text/javascript">
-            $('#date').sMonthPicker({
-                //monthsName: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
-            });
+            $('#date').sMonthPicker();
+
 
             $('#date2').sMonthPicker({
-                min: '03-2015',
-                max: new Date(),
-                startDate: '02-2017',
-                endDate: new Date()
+                monthsName: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
             });
 
             $('#date3').sMonthPicker({
-                startDate: new Date(),
-                endDate: new Date('2017-05-28')
+                max: new Date()
+            });
+
+            $('#date4').sMonthPicker({
+                min: new Date()
+            });
+
+            $('#date5').sMonthPicker({
+                startDate: '01-2016'
+            });
+
+            $('#date6').sMonthPicker({
+                endDate: '09-2018'
+            });
+
+            $('#date7').sMonthPicker({
+                btnOk: 'Change'
+            });
+
+            $('#date8').sMonthPicker({
+                btnCancel: 'Close'
+            });
+            $('#date9').sMonthPicker({
+                changeYear: false
+            });
+            $('#date10').sMonthPicker({
+                changeMonth: false
+            });
+            $('#date11').sMonthPicker({
+                onSelectMonth: function () {
+                    alert('onSelectMonth');
+                }
+            });
+
+            $('#date12').sMonthPicker({
+                onSelectYear: function () {
+                    alert('onSelectYear');
+                }
+            });
+
+            $('#date13').sMonthPicker({
+                onOpen: function () {
+                    alert('onOpen');
+                }
+            });
+
+            $('#date14').sMonthPicker({
+                onClose: function () {
+                    alert('onClose');
+                }
+            });
+
+            $('#date15').sMonthPicker({
+                onChoose: function () {
+                    alert('onChoose');
+                }
+            });
+
+            $('#date16').sMonthPicker({
+                min: new Date(),
+                max: new Date()
+            });
+
+            $('#date17').sMonthPicker({
+                min: '02-2018',
+                max: '05-2018'
+            });
+
+            $('#date18').sMonthPicker({
+                min: '05-2018',
+                max: '01-2018',
+            });
+
+            $('#date19').sMonthPicker({
+                min: '05-2018',
+                max: '11-2018',
+                startDate: '04-2018'
+            });
+
+            $('#date20').sMonthPicker({
+                min: '05-2018',
+                max: '11-2018',
+                startDate: '12-2018'
+            });
+            $('#date21').sMonthPicker({
+                min: '05-2018',
+                max: '11-2018',
+                endDate: '12-2018'
+            });
+
+            $('#date22').sMonthPicker({
+                startDate: '04-2018',
+                endDate: '12-2017'
             });
         </script>
     </body>

@@ -23,6 +23,7 @@ body {
     margin-top: 10px;
     border-radius: 3px;
     display: none;
+    z-index: 100;
 }
 .SuperMonthPicker .SMPContentEnd,
 .SuperMonthPicker .SMPContent {
@@ -39,6 +40,9 @@ body {
     position: absolute;
     top: 0;
     height: 100%;
+}
+.SuperMonthPicker .SMPField:hover {
+    background: rgba(255,255,255,0.18);
 }
 .SMPDivider {
     display: inline-block;

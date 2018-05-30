@@ -76,6 +76,8 @@
                     this.minMonth = Number(this.options.min.split('-')[0]);
                     this.minYear = Number(this.options.min.split('-')[1]);
                 }
+                this.checkNavigator(this.$elementSuperMonthPicker.find('.SMPContainer .SMPContent'), this.startSelectYear);
+                this.checkNavigator(this.$elementSuperMonthPicker.find('.SMPContainer .SMPContentEnd'), this.endSelectYear);
                 this.check();
             } else {
                 return this.options.min;
@@ -92,6 +94,8 @@
                     this.maxMonth = Number(this.options.max.split('-')[0]);
                     this.maxYear = Number(this.options.max.split('-')[1]);
                 }
+                this.checkNavigator(this.$elementSuperMonthPicker.find('.SMPContainer .SMPContent'), this.startSelectYear);
+                this.checkNavigator(this.$elementSuperMonthPicker.find('.SMPContainer .SMPContentEnd'), this.endSelectYear);
                 this.check();
             } else {
                 return this.options.max;
@@ -142,7 +146,7 @@
 
             if (this.options.min != '') {
                 if (typeof this.options.min == 'object') {
-                    this.minMonth = this.options.min.getMonth();
+                    this.minMonth = this.options.min.getMonth()+1;
                     this.minYear = this.options.min.getFullYear();
                 } else {
                     this.minMonth = Number(this.options.min.split('-')[0]);
@@ -151,9 +155,8 @@
             }
 
             if (this.options.max != '') {
-                console.log(typeof this.options.max);
                 if (typeof this.options.max == 'object') {
-                    this.maxMonth = this.options.max.getMonth();
+                    this.maxMonth = this.options.max.getMonth()+1;
                     this.maxYear = this.options.max.getFullYear();
                 } else {
                     this.maxMonth = Number(this.options.max.split('-')[0]);
@@ -221,16 +224,23 @@
                     }
                 }
             }
+            if (!this.options.changeMonth) {
+                el.find('.SMPChangeMonth div').addClass('disabled');
+            }
         },
 
         checkNavigator: function (el, year) {
-            el.find('.SMPRight, .SMPLeft').removeClass('disabled');
-
-            if (this.minYear >= year && this.options.min != '') {
-                el.find('.SMPLeft').addClass('disabled');
-            }
-            if (this.maxYear <= year && this.options.max != '') {
-                el.find('.SMPRight').addClass('disabled');
+            if (this.options.changeYear) {
+                el.find('.SMPRight, .SMPLeft').show();
+                el.find('.SMPRight, .SMPLeft').removeClass('disabled');
+                if (this.minYear >= year && this.options.min != '') {
+                    el.find('.SMPLeft').addClass('disabled');
+                }
+                if (this.maxYear <= year && this.options.max != '') {
+                    el.find('.SMPRight').addClass('disabled');
+                }
+            } else {
+                el.find('.SMPRight, .SMPLeft').hide();
             }
         },
 
@@ -293,30 +303,34 @@
                 });
 
                 SMPContentEnd.find('.SMPRight').on('click', function (e) {
-                    var year = Number(SMPContentEnd.find('.SMPYear').html());
-                    year++;
-                    if (_self.maxYear >= year || _self.options.max == '') {
-                        SMPContentEnd.find('.SMPYear').html(year);
-                        _self.check();
-                        _self.checkNavigator(SMPContentEnd, year);
-                    }
-                    if (typeof _self.options.onSelectYear == 'function') {
-                        _self.options.onSelectYear();
+                    if (_self.options.changeYear) {
+                        var year = Number(SMPContentEnd.find('.SMPYear').html());
+                        year++;
+                        if (_self.maxYear >= year || _self.options.max == '') {
+                            SMPContentEnd.find('.SMPYear').html(year);
+                            _self.check();
+                            _self.checkNavigator(SMPContentEnd, year);
+                        }
+                        if (typeof _self.options.onSelectYear == 'function') {
+                            _self.options.onSelectYear();
+                        }
                     }
                 });
 
                 SMPContentEnd.find('.SMPChangeMonth div').on('click', function (e) {
-                    if ($(this).hasClass('disabled')) {
-                        return false;
-                    }
-                    SMPContentEnd.find('.SMPChangeMonth div').removeClass('active');
-                    $(this).addClass('active');
-                    _self.endSelectMonth = $(this).attr('data-val');
-                    _self.endSelectYear = SMPContentEnd.find('.SMPYear').html();
+                    if (_self.options.changeYear) {
+                        if ($(this).hasClass('disabled')) {
+                            return false;
+                        }
+                        SMPContentEnd.find('.SMPChangeMonth div').removeClass('active');
+                        $(this).addClass('active');
+                        _self.endSelectMonth = $(this).attr('data-val');
+                        _self.endSelectYear = SMPContentEnd.find('.SMPYear').html();
 
-                    _self.check();
-                    if (typeof _self.options.onSelectMonth == 'function') {
-                        _self.options.onSelectMonth();
+                        _self.check();
+                        if (typeof _self.options.onSelectMonth == 'function') {
+                            _self.options.onSelectMonth();
+                        }
                     }
                 });
         },
@@ -336,7 +350,7 @@
                     this.startYear = Number(this.options.startDate.split('-')[1]);
                 }
             } else {
-                this.startMonth = d.getMonth();
+                this.startMonth = d.getMonth()+1;
                 this.startMonth = d.getFullYear();
             }
 
@@ -349,17 +363,17 @@
                     this.endYear = Number(this.options.endDate.split('-')[1]);
                 }
             } else {
-                this.endMonth = d.getMonth() + 1;
+                this.endMonth = d.getMonth()+1;
                 this.endYear = d.getFullYear();
             }
 
 
             if (this.options.endDate != '') {
                 if (this.startYear > this.endYear) {
-                    console.log('Invalid: startDate greater than or equal endDate');
+                    console.error('Invalid: startDate greater than or equal endDate');
                 } else if (this.startYear == this.endYear) {
                     if (this.startMonth >= this.endMonth) {
-                        console.log('Invalid: startDate greater than or equal endDate');
+                        console.error('Invalid: startDate greater than or equal endDate');
                     }
                 }
             }
@@ -391,6 +405,63 @@
                 } else {
                     this.maxMonth = Number(this.options.max.split('-')[0]);
                     this.maxYear = Number(this.options.max.split('-')[1]);
+                }
+            }
+
+            // ERROR MENSAGES
+            if (this.options.min != '' && this.options.max != '') {
+                if (this.minYear > this.maxYear) {
+                    console.error('Max date less than the minimum date. Enter a date equal to or greater than the minimum date');
+                    return false;
+                }
+                if (this.minYear == this.maxYear && this.minMonth > this.maxMonth) {
+                    console.error('Max date less than the minimum date. Enter a date equal to or greater than the minimum date');
+                    return false;
+                }
+            }
+
+
+            if (this.options.min != '') {
+                if (this.startSelectYear < this.minYear) {
+                    console.error('Invalid date: The start date is less than the minimum date');
+                    return false;
+                }
+                if (this.startSelectYear == this.minYear && this.startSelectMonth < this.minMonth) {
+                    console.error('Invalid date: The start date is less than the minimum date');
+                    return false;
+                }
+            }
+
+            if (this.options.max != '') {
+                if (this.startSelectYear > this.maxYear) {
+                    console.error('Invalid date: The start date is greater than the maximum date');
+                    return false;
+                }
+                if (this.startSelectYear == this.maxYear && this.startSelectMonth > this.maxMonth) {
+                    console.error('Invalid date: The start date is greater than the maximum date');
+                    return false;
+                }
+            }
+
+            if (this.options.endDate != '') {
+                if (this.startSelectYear > this.endSelectYear) {
+                    console.error('Invalid date: The start date is greater than the end date');
+                    return false;
+                }
+                if (this.startSelectYear == this.endSelectYear &&  this.startSelectMonth > this.endSelectMonth) {
+                    console.error('Invalid date: The start date is greater than the end date');
+                    return false;
+                }
+
+                if (this.options.max != '') {
+                    if (this.endSelectYear == this.maxYear && this.endSelectMonth > this.maxMonth) {
+                        console.error('Invalid Date: The end date is greater than the maximum date');
+                        return false;
+                    }
+                    if (this.endSelectYear > this.maxYear) {
+                        console.error('Invalid Date: The end date is greater than the maximum date');
+                        return false;
+                    }
                 }
             }
 
@@ -435,46 +506,51 @@
             clone.data('sMonthPicker', this.$element.data('sMonthPicker'))
             this.$element.remove();
             this.$element = clone;
-
             var SMPContent = this.$elementSuperMonthPicker.find('.SMPContent');
-
             this.check();
 
             this.$elementSuperMonthPicker.on('click', function (e) {
                 e.stopPropagation();
             });
             
-            _self.checkNavigator(SMPContent, this.startSelectYear);
+            this.checkNavigator(SMPContent, this.startSelectYear);
 
             this.$elementSuperMonthPicker.find('.SMPField').on('click', function (e) {
                 $('.SMPContainer').hide();
                 _self.$elementSuperMonthPicker.find('.SMPContainer').show();
                 _self.reset();
+                if (typeof _self.options.onOpen == 'function') {
+                    _self.options.onOpen();
+                }
             });
 
             SMPContent.find('.SMPLeft').on('click', function (e) {
-                var year = Number(SMPContent.find('.SMPYear').html());
-                year--;
-                if (_self.minYear <= year || _self.options.min == '') {
-                    SMPContent.find('.SMPYear').html(year);
-                    _self.check();
-                    _self.checkNavigator(SMPContent, year);
-                }
-                if (typeof _self.options.onSelectYear == 'function') {
-                    _self.options.onSelectYear();
+                if (_self.options.changeYear) {
+                    var year = Number(SMPContent.find('.SMPYear').html());
+                    year--;
+                    if (_self.minYear <= year || _self.options.min == '') {
+                        SMPContent.find('.SMPYear').html(year);
+                        _self.check();
+                        _self.checkNavigator(SMPContent, year);
+                    }
+                    if (typeof _self.options.onSelectYear == 'function') {
+                        _self.options.onSelectYear();
+                    }
                 }
             });
 
             SMPContent.find('.SMPRight').on('click', function (e) {
-                var year = Number(SMPContent.find('.SMPYear').html());
-                year++;
-                if (_self.maxYear >= year || _self.options.max == '') {
-                    SMPContent.find('.SMPYear').html(year);
-                    _self.check();
-                    _self.checkNavigator(SMPContent, year);
-                }
-                if (typeof _self.options.onSelectYear == 'function') {
-                    _self.options.onSelectYear();
+                if (_self.options.changeYear) {
+                    var year = Number(SMPContent.find('.SMPYear').html());
+                    year++;
+                    if (_self.maxYear >= year || _self.options.max == '') {
+                        SMPContent.find('.SMPYear').html(year);
+                        _self.check();
+                        _self.checkNavigator(SMPContent, year);
+                    }
+                    if (typeof _self.options.onSelectYear == 'function') {
+                        _self.options.onSelectYear();
+                    }
                 }
             });
 
@@ -501,7 +577,6 @@
 
             _self.$elementSuperMonthPicker.find('.btnOk').on('click', function (e) {
                 var val = (_self.startSelectMonth < 10 ? '0':'')+_self.startSelectMonth+'/'+_self.startSelectYear+(_self.options.endDate != '' ? ' ~ '+(_self.endSelectMonth < 10 ? '0':'')+_self.endSelectMonth+'/'+_self.endSelectYear:'');
-                //_self.$elementSuperMonthPicker.find('.SMPField').html(val);
                 _self.$element.val(val);
 
                 _self.currentStartMonth = _self.startSelectMonth;
@@ -510,8 +585,8 @@
                 _self.currentEndYear = _self.endSelectYear;
 
                 _self.$elementSuperMonthPicker.find('.SMPContainer').hide();
-                if (typeof _self.options.onChose == 'function') {
-                    _self.options.onChose();
+                if (typeof _self.options.onChoose == 'function') {
+                    _self.options.onChoose();
                 }
             });
 
@@ -521,10 +596,6 @@
                     _self.options.onClose();
                 }
             });
-
-            if (typeof this.options.onOpen == 'function') {
-                this.options.onOpen();
-            }
         }
     };
 
@@ -552,9 +623,11 @@
     };
 
     $.fn.sMonthPicker.defaults = {
-        'monthsName' : ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        'monthsName' : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         'max' : '',
         'min' : '',
+        'changeMonth' : true,
+        'changeYear' : true,
         'startDate' : new Date(),
         'endDate' : '',
         'theme': 'default',
@@ -564,21 +637,11 @@
         'onSelectYear': function () {},
         'onOpen': function () {},
         'onClose': function () {},
-        'onChose': function () {}
+        'onChoose': function () {}
     };
 
     $.fn.sMonthPicker.noConflict = function() {
         $.fn.sMonthPicker = old;
         return this;
     };
-
-    $(function() {
-        $('.sMonthPicker').each(function() {
-            var $this = $(this), options = {
-                'ttt' : $this.attr('ttt')
-            };
-
-            $this.sMonthPicker(options);
-        });
-    });
 })(window.jQuery);

@@ -17,7 +17,7 @@
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="jumbotron">
                 <h1 class="display-4">Page Test</h1>
                 <p class="lead">This is a simple test page</p>
@@ -135,32 +135,26 @@
                     <h2>Methods in action</h2>
                     <form>
                         <div class="form-group">
-                            <label>max <button class="btn btn-primary">Set val: </button></label>
+                            <label><button type="button" id="btnDate23" class="btn btn-primary btn-sm">Set min date</button></label>
                             <input class="form-control" type="text" id="date23">
                         </div>
                         <div class="form-group">
-                            <label>Max > Min</label>
+                            <label><button type="button" id="btnDate24" class="btn btn-primary btn-sm">Set max date</button></label>
                             <input class="form-control" type="text" id="date24">
                         </div>
                         <div class="form-group">
-                            <label>Max < Min (F12 view error)</label>
+                            <label>
+                                <button type="button" id="btnDate25" class="btn btn-primary btn-sm">Set startDate</button>
+                                <button type="button" id="btnDate251" class="btn btn-primary btn-sm">Set endDate</button>
+                            </label>
                             <input class="form-control" type="text" id="date25">
                         </div>
                         <div class="form-group">
-                            <label>startDate < min (F12 view error)</label>
+                            <label>
+                                <button type="button" id="btnDate26" class="btn btn-primary btn-sm">Set btnOk</button>
+                                <button type="button" id="btnDate27" class="btn btn-primary btn-sm">Set btnCancel</button>
+                            </label>
                             <input class="form-control" type="text" id="date26">
-                        </div>
-                        <div class="form-group">
-                            <label>startDate > max (F12 view error)</label>
-                            <input class="form-control" type="text" id="date27">
-                        </div>
-                        <div class="form-group">
-                            <label>endDate > max (F12 view error)</label>
-                            <input class="form-control" type="text" id="date28">
-                        </div>
-                        <div class="form-group">
-                            <label>startDate > endDate (F12 view error)</label>
-                            <input class="form-control" type="text" id="date29">
                         </div>
                     </form>
                 </div>
@@ -179,7 +173,6 @@
         <script type="text/javascript" src="super-monthpicker.js"></script>
         <script type="text/javascript">
             $('#date').sMonthPicker();
-
 
             $('#date2').sMonthPicker({
                 monthsName: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
@@ -279,6 +272,44 @@
             $('#date22').sMonthPicker({
                 startDate: '04-2018',
                 endDate: '12-2017'
+            });
+
+            $('#date23').sMonthPicker();
+
+            $('#btnDate23').on('click', function () {
+                $('#date23').sMonthPicker('min', new Date());
+            });
+
+            $('#date24').sMonthPicker();
+
+            $('#btnDate24').on('click', function () {
+                $('#date24').sMonthPicker('max', new Date());
+            });
+
+            $('#date25').sMonthPicker();
+
+            $('#btnDate25').on('click', function () {
+                $('#date25').sMonthPicker('startDate', '04-2017');
+            });
+
+            $('#btnDate251').on('click', function () {
+                $('#date25').sMonthPicker('endDate', '05-2019');
+            });
+
+            $('#date26').sMonthPicker();
+
+            $('#btnDate26').on('click', function () {
+                $('#date26').sMonthPicker('btnOk', 'Test Ok');
+            });
+
+            $('#btnDate27').on('click', function () {
+                $('#date26').sMonthPicker('btnCancel', 'Test Cancel');
+            });
+
+            $('#date28').sMonthPicker();
+
+            $('#btnDate28').on('click', function () {
+                $('#date28').sMonthPicker('btnOk', 'Test Ok');
             });
         </script>
     </body>

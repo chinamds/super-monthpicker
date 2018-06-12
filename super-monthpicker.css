@@ -9,12 +9,6 @@ body {
     color: #333;
 }
 
-/*.SuperMonthPicker input {
-    opacity: 0;
-    position: fixed;
-    top: -100%;
-}*/
-
 .SuperMonthPicker .SMPContainer {
     position: absolute;
     padding: 15px;

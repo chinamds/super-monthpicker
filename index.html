@@ -156,6 +156,14 @@
                             </label>
                             <input class="form-control" type="text" id="date26">
                         </div>
+                        <div class="form-group">
+                            <label>
+                                <button type="button" id="btnDate28" class="btn btn-primary btn-sm">Disabled</button>
+                                <button type="button" id="btnDate29" class="btn btn-primary btn-sm">Reset</button>
+                                <button type="button" id="btnDate30" class="btn btn-primary btn-sm">Destroy</button>
+                            </label>
+                            <input class="form-control" type="text" id="date27">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -306,10 +314,18 @@
                 $('#date26').sMonthPicker('btnCancel', 'Close');
             });
 
-            $('#date28').sMonthPicker();
+            $('#date27').sMonthPicker();
 
             $('#btnDate28').on('click', function () {
-                $('#date28').sMonthPicker('btnOk', 'Test Ok');
+                $('#date27').sMonthPicker('disabled', true);
+            });
+
+            $('#btnDate29').on('click', function () {
+                $('#date27').sMonthPicker('reset');
+            });
+
+            $('#btnDate30').on('click', function () {
+                $('#date27').sMonthPicker('destroy');
             });
         </script>
     </body>

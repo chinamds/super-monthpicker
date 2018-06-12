@@ -22,7 +22,7 @@
 	</head>
 
 	<body>
-		<header> </header>
+		<header></header>
 
 		<div class="container">
 			<div class="row">
@@ -40,52 +40,123 @@
 						</script>
 					</section>
 
+					<!--
+					*****************************
+					Methods
+					******************************
+					-->
+					
 					<section>
 						<div class="page-header">
-							<h1> <span class="oi oi-data-transfer-download"></span> Get Bootstrap Filestyle </h1>
-						</div>
-						<hr>
-						<p>
-							<a href="https://github.com/markusslima/bootstrap-filestyle" target="_blank" class="btn btn-secondary"> <span class="oi oi-random"></span> Project on Github </a>
-							<a href="https://github.com/markusslima/bootstrap-filestyle/archive/v2.1.0.zip" class="btn btn-primary"> <span class="oi oi-data-transfer-download"></span> Download </a>
-						</p>
-						<br>
-						<br>
-						<div class="page-header">
-							<h1> <span class="oi oi-external-link"></span> Other versions</h1>
-						</div>
-						<hr>
-						<div> <a href="1.0.6/">View documentation of the version 1.0.6 (for Bootstrap 2)</a></div>
-						<div> <a href="1.2.3/">View documentation of the version 1.2.3 (for Bootstrap 3)</a></div>
-						<br>
-						<br>
-
-						<div class="page-header">
-							<h1> <span class="oi oi-fork"></span> Requirements</h1>
+							<h1>Methods</h1>
 							<hr>
 						</div>
-						<p>
-							<a href="http://getbootstrap.com/">Bootstrap 4</a> and <a href="http://www.jquery.com">jQuery</a>.
-						</p>
-					</section>
 
-					<section>
-						<div class="page-header">
-							<h1> <span class="oi oi-beaker"></span> Install</h1>
-							<hr>
+						<br>
+						<h3>dragdrop <small>Enable or disabled drag and drop selected files</small></h3>
+						<div class="alert alert-warning" role="alert">
+						  	When enabling the drag and drop event multiple file selection is enabled. That is, you can not limit the amount of uploaded files in your upload using drag and drop.
 						</div>
-						<div class="alert alert-warning"><span class="oi oi-warning"></span> To use data attributes load the file at the end of the body</div>
-<pre><code class="language-javascript">// Include
-&lt;script type="text/javascript" src="js/bootstrap-filestyle.min.js"&gt; &lt;/script&gt;
+<pre><code class="language-javascript">// get
+$(":file").filestyle('dragdrop');
+// set
+$(":file").filestyle('dragdrop', false);
+</code></pre>
 
-// Via JavaScript
-$(":file").filestyle();
+						<br>
+						<h3>clear <small>Clear selected files</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('clear');
+</code></pre>
 
-// Via data attributes
-&lt;input type="file" class="filestyle"&gt;
+						<br>
+						<h3>destroy <small>Destroy a filestyle completely</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('destroy');
+</code></pre>
+
+						<br>
+						<h3>disabled <small>Disabled a filestyle</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('disabled');
+// set
+$(":file").filestyle('disabled', true);
+</code></pre>
+
+						<br>
+						<h3>input <small>Set or get the value of the input option</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('input');
+// set
+$(":file").filestyle('input', false);
+</code></pre>
+
+						<br>
+						<h3>htmlIcon <small>Set or get the value of the icon option</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('htmlIcon');
+// set
+$(":file").filestyle('htmlIcon', '&lt;span class="oi oi-random"&gt;&lt;/span&gt;');
+</code></pre>
+
+						<br>
+						<h3>text <small>Set or get the text of the button</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('text');
+// set
+$(":file").filestyle('text', 'Loading...');
+</code></pre>
+
+						<br>
+						<h3>btnClass <small>Set or get the class of the button</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('btnClass');
+// set
+$(":file").filestyle('btnClass', 'btn-danger'};
+</code></pre>
+
+						<br>
+						<h3>size <small>Set or get the class of the input text</small></h3>
+<pre><code class="language-javascript">// get
+$(:file").filestyle('size');
+// set
+$(:file").filestyle('size', 'lg');
+</code></pre>
+
+						<br>
+						<h3>badge <small>Set or get boolean</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('badge');
+// set
+$(":file").filestyle('badge', true);
+</code></pre>
+
+						<br>
+						<h3>badgeName <small>Set or get the class of the badge count</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('badgeName');
+<span class="com">// set</span>
+$(":file").filestyle('badgeName', 'badge-danger');
+</code></pre>
+
+						<br>
+						<h3>buttonBefore <small>Set or get button position</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('buttonBefore');
+<span class="com">// set</span>
+$(":file").filestyle('buttonBefore', true);
+</code></pre>
+						
+						<br>
+						<h3>placeholder <small>Set or get placeholder text</small></h3>
+<pre><code class="language-javascript">// get
+$(":file").filestyle('placeholder');
+<span class="com">// set</span>
+$(":file").filestyle('placeholder', 'My file text');
 </code></pre>
 					</section>
 					<section>
+						<br>
 						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 						<ins class="adsbygoogle"
 						     style="display:block; text-align:center;"
@@ -106,7 +177,7 @@ $(":file").filestyle();
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="js/bootstrap-filestyle.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
 		<script type="text/javascript" src="js/prism.js"></script>
 		<script type="text/javascript" src="js/inc.js"></script>
 		<script>

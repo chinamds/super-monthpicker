@@ -1,0 +1,167 @@
+body {
+	padding: 59px 0 0 0;
+	font-size: 20px;
+	font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+
+/*font-family: 'Oswald', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'EB Garamond', serif;
+font-family: 'Dancing Script', cursive;*/
+
+header {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+header h1 {
+	font-size: 120px;
+	line-height: 76px;
+	margin-bottom: 30px;
+	color: #00a3e4;
+	font-weight: bold;
+	font-family: 'EB Garamond', serif;
+}
+
+header h1 span {
+	font-size: 140px;
+	font-family: 'Dancing Script', cursive;
+	color: #ff9e26;
+	margin-left: 83px;
+}
+
+header p {
+	font-size: 16px;
+	font-family: 'Raleway', sans-serif;
+	color: #000;
+}
+
+.bg-primary {
+    background-color: #1d1d1d!important;
+}
+.page-header h1 {
+	color: #0e4680;
+}
+
+.well.well-small {
+	border: 1px solid #dedede;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+}
+.navbar-dark .navbar-nav .nav-link {
+	font-size: 16px;
+	color: rgba(255,255,255,.7)
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+	color: rgba(255,255,255,1)
+}
+section {
+	padding: 60px 0 0;
+}
+
+section h3 {
+	color: #0070ff;
+	font-weight: bold;
+}
+
+section h3 small {
+	font-weight: normal;
+}
+
+pre.prettyprint {
+	background: #fff;
+	padding: 10px 5px;
+	border: 1px solid #d8d8d8;
+	font-size: 15px;
+}
+.imghead {
+	float: right;
+	width: 40%;
+	margin-top: -340px;
+}
+footer {
+	padding: 20px 0 10px 0;
+	background: #333;
+	color: #fff;
+}
+footer p {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+footer a, footer a:hover, footer a:active, footer a:visited {
+	color: #fff;
+}
+.buttons-share {
+	padding: 10px;
+	background: #ededed;
+	border-bottom: 1px solid #dedede;
+}
+
+@media (max-width: 480px) {
+	header h1 {
+		font-size: 60px;
+	}
+	header h3 {
+		font-size: 30px;
+	}
+	header h4 {
+		font-size: 20px;
+	}
+}
+@media (max-width: 979px) {
+	body {
+		padding-top: 0;
+	}
+	.navbar-fixed-top {
+		margin-bottom: 0;
+	}
+	header h1 {
+		font-size: 60px;
+	}
+	header h3 {
+		font-size: 35px;
+	}
+	header h4 {
+		font-size: 20px;
+	}
+}
+@media (max-width: 767px) {
+	body {
+		font-size: 13px;
+		padding: 0 10px;
+	}
+	header, .buttons-share {
+		margin: 0 -20px;
+	}
+	header h1 {
+		font-size: 50px;
+	}
+	header h3 {
+		font-size: 30px;
+	}
+	header h4 {
+		font-size: 15px;
+	}
+	footer {
+		margin: 0 -10px;
+	}
+}
+/* code color */
+.str {
+	color: green;
+}
+
+.tag {
+	color: blue;
+}
+
+h3 small {
+	font-size: 60%;
+	color: #808080;
+}

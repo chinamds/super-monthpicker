@@ -1,7 +1,3 @@
-body {
-    padding: 10px;
-}
-
 .SuperMonthPicker {
     display: inline-block;
     position: relative;
@@ -11,10 +7,10 @@ body {
 
 .SuperMonthPicker .SMPContainer {
     position: absolute;
-    padding: 15px;
     background: #fff;
     box-shadow: 1px 1px 5px rgba(150,150,150,0.6);
     margin-top: 10px;
+    padding-top: 10px;
     border-radius: 3px;
     display: none;
     z-index: 100;
@@ -23,7 +19,8 @@ body {
 .SuperMonthPicker .SMPContent {
     position: relative;
     display: inline-block;
-    width: 185px;
+    width: 214px;
+    padding: 15px;
 }
 .SuperMonthPicker .SMPContentEnd {
     margin-left: 25px;
@@ -54,12 +51,14 @@ body {
 }
 
 .SMPChangeYear {
-    padding: 0 0 10px;
+    padding: 0;
+    margin: -15px -15px 15px;
 }
 
 .SMPChangeYear .SMPYear {
     text-align: center;
-    padding: 14px 0px;
+    padding: 8px 0px;
+    font-size: 21px;
 }
 
 .SMPChangeYear .SMPLeft {
@@ -78,22 +77,23 @@ body {
 
 .SMPChangeYear .SMPLeft,
 .SMPChangeYear .SMPRight {
-    height: 53px;
+    height: 48px;
     width: 53px;
     text-align: center;
-    line-height: 50px;
+    line-height: 44px;
+
 }
 
 .SMPChangeMonth > div {
     float: left;
-    width: 41px;
-    height: 41px;
     text-align: center;
     padding: 0px;
     cursor: pointer;
     font-size: 0.9em;
-    line-height: 40px;
-    margin: 2.5px;
+    line-height: 34px;
+    margin: 5.5px;
+    width: 35px;
+    height: 35px;
 }
 
 
@@ -119,7 +119,13 @@ body {
     color: #333;
 }
 .SMPButtons {
-    margin-top: 15px;
+    margin: 0 15px 15px;
+}
+
+.SMPButtons::after {
+    display: block;
+    clear: both;
+    content: "";
 }
 
 .SMPButtons button {
@@ -130,7 +136,7 @@ body {
     font-size: 0.9em;
     float: right;
     margin-left: 5px;
-    cursor: pointer;
+    cursor: pointer;    
 }
 
 .SMPButtons button:hover {
@@ -175,3 +181,110 @@ body {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
+
+/** Themes **/
+
+/** bootstrap4 **/
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPContainer {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    border: 1px solid rgba(0,0,0,.2);
+    box-shadow: none;
+    padding-top: 0px;
+}
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPChangeYear {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPChangeMonth > div:hover {
+    color: #007bff;
+}
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPChangeMonth > div.active {
+    border-radius: .25rem;
+    border: 1px solid #007bff;
+    color: #007bff;
+    background: #fff;
+    line-height: 33px;
+}
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPChangeYear .SMPLeft .arrow,
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPChangeYear .SMPRight .arrow {
+    border-color: #707070;
+}
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPButtons button {
+    border-radius: .25rem;
+    background: #007bff;
+    border: 0;
+}
+.SuperMonthPicker[data-theme="bootstrap4"] .SMPButtons button:hover {
+    background: #0069d9;
+}
+
+/** foundation **/
+.SuperMonthPicker[data-theme="foundation"] .SMPContainer {
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    border: 1px solid #e6e6e6;
+    box-shadow: none;
+    padding-top: 0px;
+}
+.SuperMonthPicker[data-theme="foundation"] .SMPChangeYear {
+    background-color: #e6e6e6;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.SuperMonthPicker[data-theme="foundation"] .SMPChangeMonth > div:hover {
+    color: #0a0a0a;
+}
+.SuperMonthPicker[data-theme="foundation"] .SMPChangeMonth > div.active {
+    border-radius: 0;
+    color: #fff;
+    background: #1779ba;
+}
+.SuperMonthPicker[data-theme="foundation"] .SMPChangeYear .SMPLeft .arrow,
+.SuperMonthPicker[data-theme="foundation"] .SMPChangeYear .SMPRight .arrow {
+    border-color: #707070;
+}
+.SuperMonthPicker[data-theme="foundation"] .SMPButtons button {
+    border-radius: 0;
+    background: #14679e;
+    border: 0;
+}
+
+.SuperMonthPicker[data-theme="foundation"] .SMPButtons button:hover {
+    background: #126195;
+}
+
+/** metroui **/
+.SuperMonthPicker[data-theme="metroui"] .SMPContainer {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
+    border: 1px solid #e6e6e6;
+    box-shadow: none;
+    padding-top: 0px;
+}
+.SuperMonthPicker[data-theme="metroui"] .SMPChangeYear {
+    background-color: #e6e6e6;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.SuperMonthPicker[data-theme="metroui"] .SMPChangeMonth > div:hover {
+    color: #0a0a0a;
+}
+.SuperMonthPicker[data-theme="metroui"] .SMPChangeMonth > div.active {
+    border-radius: 0;
+    color: #fff;
+    background: #1779ba;
+}
+.SuperMonthPicker[data-theme="metroui"] .SMPChangeYear .SMPLeft .arrow,
+.SuperMonthPicker[data-theme="metroui"] .SMPChangeYear .SMPRight .arrow {
+    border-color: #707070;
+}
+.SuperMonthPicker[data-theme="metroui"] .SMPButtons button {
+    border-radius: 0;
+    background: #14679e;
+    border: 0;
+}
+
+.SuperMonthPicker[data-theme="metroui"] .SMPButtons button:hover {
+    background: #126195;
+}
+
+

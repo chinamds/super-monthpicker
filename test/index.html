@@ -97,6 +97,44 @@
                             <input class="form-control" type="text" id="date15">
                         </div>
                     </form>
+                    <br>
+                    <h2>Methods in action</h2>
+                    <form>
+                        <div class="form-group">
+                            <label><button type="button" id="btnDate23" class="btn btn-primary btn-sm">Set min date</button></label>
+                            <input class="form-control" type="text" id="date23">
+                        </div>
+                        <div class="form-group">
+                            <label><button type="button" id="btnDate24" class="btn btn-primary btn-sm">Set max date</button></label>
+                            <input class="form-control" type="text" id="date24">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <button type="button" id="btnDate25" class="btn btn-primary btn-sm">Set startDate</button>
+                                <button type="button" id="btnDate251" class="btn btn-primary btn-sm">Set endDate</button>
+                            </label>
+                            <input class="form-control" type="text" id="date25">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <button type="button" id="btnDate26" class="btn btn-primary btn-sm">Set btnOk</button>
+                                <button type="button" id="btnDate27" class="btn btn-primary btn-sm">Set btnCancel</button>
+                            </label>
+                            <input class="form-control" type="text" id="date26">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <button type="button" id="btnDate28" class="btn btn-primary btn-sm">Disabled</button>
+                                <button type="button" id="btnDate29" class="btn btn-primary btn-sm">Reset</button>
+                                <button type="button" id="btnDate30" class="btn btn-primary btn-sm">Destroy</button>
+                            </label>
+                            <input class="form-control" type="text" id="date27">
+                        </div>
+                        <div class="form-group">
+                            <label><button type="button" id="btnDate31" class="btn btn-primary btn-sm">Get value</button></label>
+                            <input class="form-control" type="text" id="date28">
+                        </div>
+                    </form>
                 </div>
                 <div class="col-sm">
                     <h2>Stress test</h2>
@@ -132,37 +170,23 @@
                     </form>
                 </div>
                 <div class="col-sm">
-                    <h2>Methods in action</h2>
+                    <h2>Themes</h2>
                     <form>
                         <div class="form-group">
-                            <label><button type="button" id="btnDate23" class="btn btn-primary btn-sm">Set min date</button></label>
-                            <input class="form-control" type="text" id="date23">
+                            <label>Default</label>
+                            <input class="form-control" type="text" id="theme1">
                         </div>
                         <div class="form-group">
-                            <label><button type="button" id="btnDate24" class="btn btn-primary btn-sm">Set max date</button></label>
-                            <input class="form-control" type="text" id="date24">
+                            <label>Bootstrap 4</label>
+                            <input class="form-control" type="text" id="theme2">
                         </div>
                         <div class="form-group">
-                            <label>
-                                <button type="button" id="btnDate25" class="btn btn-primary btn-sm">Set startDate</button>
-                                <button type="button" id="btnDate251" class="btn btn-primary btn-sm">Set endDate</button>
-                            </label>
-                            <input class="form-control" type="text" id="date25">
+                            <label>Foudation</label>
+                            <input class="form-control" type="text" id="theme3">
                         </div>
                         <div class="form-group">
-                            <label>
-                                <button type="button" id="btnDate26" class="btn btn-primary btn-sm">Set btnOk</button>
-                                <button type="button" id="btnDate27" class="btn btn-primary btn-sm">Set btnCancel</button>
-                            </label>
-                            <input class="form-control" type="text" id="date26">
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                <button type="button" id="btnDate28" class="btn btn-primary btn-sm">Disabled</button>
-                                <button type="button" id="btnDate29" class="btn btn-primary btn-sm">Reset</button>
-                                <button type="button" id="btnDate30" class="btn btn-primary btn-sm">Destroy</button>
-                            </label>
-                            <input class="form-control" type="text" id="date27">
+                            <label>Metro UI</label>
+                            <input class="form-control" type="text" id="theme4">
                         </div>
                     </form>
                 </div>
@@ -314,7 +338,7 @@
                 $('#date26').sMonthPicker('btnCancel', 'Close');
             });
 
-            $('#date27').sMonthPicker();
+            $('#date27, #date28').sMonthPicker();
 
             $('#btnDate28').on('click', function () {
                 $('#date27').sMonthPicker('disabled', true);
@@ -327,6 +351,15 @@
             $('#btnDate30').on('click', function () {
                 $('#date27').sMonthPicker('destroy');
             });
+
+            $('#btnDate31').on('click', function () {
+                alert($('#date27').sMonthPicker('get'));
+            });
+
+            $('#theme1').sMonthPicker();
+            $('#theme2').sMonthPicker({theme: 'bootstrap4'});
+            $('#theme3').sMonthPicker({theme: 'foundation'});
+            $('#theme3').sMonthPicker({theme: 'metroui'});
         </script>
     </body>
 </html>

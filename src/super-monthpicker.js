@@ -323,8 +323,23 @@
             }
         },
 
+        theme : function (value) {
+            if (value != '') {
+                var _self = this;
+                this.options.theme = value;
+
+                this.$elementSuperMonthPicker.attr('data-theme', this.options.theme);
+            } else {
+                return this.options.theme;
+            }
+        },
+
         get : function () {
-            return [this.startSelectMonth+'/'+this.startSelectYear, this.endSelectMonth+'/'+this.endSelectYear];
+            var arr = [this.startSelectMonth+'/'+this.startSelectYear];
+            if (this.options.endDate != '') {
+                arr.push(this.endSelectMonth+'/'+this.endSelectYear);
+            }
+            return arr;
         },
 
         check : function () {
@@ -485,7 +500,7 @@
             this.checkNavigator(SMPContentEnd, this.endSelectYear);
 
             SMPContentEnd.find('.SMPChangeMonth div[data-val="'+this.endMonth+'"]').addClass('active');
-            this.$elementSuperMonthPicker.find('.SMPContainer').css('width', '430px');
+            this.$elementSuperMonthPicker.find('.SMPContainer').css('width', '454px');
             
             SMPContentEnd.find('.SMPLeft').on('click', function (e) {
                 var year = Number(SMPContentEnd.find('.SMPYear').html());
@@ -656,7 +671,7 @@
             clone.val(val);
             clone.prop('disabled', true);
 
-            this.$elementSuperMonthPicker = $('<div class="SuperMonthPicker">'+
+            this.$elementSuperMonthPicker = $('<div class="SuperMonthPicker" data-theme="'+this.options.theme+'">'+
                 '  <div class="SMPField"></div>'+
                 '  <div class="SMPContainer">'+
                 '    <div class="SMPContent">'+
@@ -822,6 +837,7 @@
         'btnOk' : 'Ok',
         'btnCancel' : 'Cancel',
         'disabled' : false,
+        'theme' : 'default',
         'onSelectMonth': function () {},
         'onSelectYear': function () {},
         'onOpen': function () {},

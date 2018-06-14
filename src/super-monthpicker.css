@@ -232,7 +232,7 @@
 }
 
 .SuperMonthPicker[data-theme="foundation"] .SMPChangeMonth > div:hover {
-    color: #0a0a0a;
+    color: #1779ba;
 }
 .SuperMonthPicker[data-theme="foundation"] .SMPChangeMonth > div.active {
     border-radius: 0;
@@ -256,35 +256,143 @@
 /** metroui **/
 .SuperMonthPicker[data-theme="metroui"] .SMPContainer {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #dfdfdf;
     box-shadow: none;
     padding-top: 0px;
 }
 .SuperMonthPicker[data-theme="metroui"] .SMPChangeYear {
-    background-color: #e6e6e6;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #dfdfdf;
+    margin: -15px -8px 15px;
 }
 
 .SuperMonthPicker[data-theme="metroui"] .SMPChangeMonth > div:hover {
-    color: #0a0a0a;
+    color: rgb(27, 161, 226);
 }
 .SuperMonthPicker[data-theme="metroui"] .SMPChangeMonth > div.active {
     border-radius: 0;
-    color: #fff;
-    background: #1779ba;
+    border: 1px solid rgb(27, 161, 226);
+    color: rgb(27, 161, 226);
+    background: #fff;
+    line-height: 33px;
+    position: relative;
 }
+
+.SuperMonthPicker[data-theme="metroui"] .SMPChangeMonth > div.active::before {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: transparent;
+    border-color: #ffffff !important;
+    border-left: 1.5px solid;
+    border-bottom: 1.5px solid;
+    height: 0.25rem;
+    width: .4rem;
+    right: .15rem;
+    top: .15rem;
+    z-index: 102;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.SuperMonthPicker[data-theme="metroui"] .SMPChangeMonth > div.active::after {
+    position: absolute;
+    display: block;
+    border-top: 20px solid #5ebdec;
+    border-left: 20px solid transparent;
+    right: -1px;
+    content: "";
+    top: -1px;
+    z-index: 100;
+}
+
 .SuperMonthPicker[data-theme="metroui"] .SMPChangeYear .SMPLeft .arrow,
 .SuperMonthPicker[data-theme="metroui"] .SMPChangeYear .SMPRight .arrow {
     border-color: #707070;
 }
+.SuperMonthPicker[data-theme="metroui"] .SMPButtons {
+    margin: 0 8px 10px;
+    border-top: 1px solid #dfdfdf;
+    padding: 10px 0px 0;
+}
+
 .SuperMonthPicker[data-theme="metroui"] .SMPButtons button {
     border-radius: 0;
-    background: #14679e;
+    background: #ebebeb;
     border: 0;
+    color: #1d1d1d;
 }
 
 .SuperMonthPicker[data-theme="metroui"] .SMPButtons button:hover {
-    background: #126195;
+    background: rgba(29, 29, 29, 0.1);
 }
 
+/** semantic **/
+.SuperMonthPicker[data-theme="semantic"] .SMPContainer {
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    border: 1px solid #d4d4d5;
+    box-shadow: none;
+    padding-top: 0px;
+}
+.SuperMonthPicker[data-theme="semantic"] .SMPChangeYear {
+    border-bottom: 1px solid #ebebeb;
+}
 
+.SuperMonthPicker[data-theme="semantic"] .SMPChangeMonth > div:hover {
+    color: #009c95;
+}
+.SuperMonthPicker[data-theme="semantic"] .SMPChangeMonth > div.active {
+    border-radius: .28571429rem;
+    border: 1px solid #009c95;
+    color: #009c95;
+    background: #fff;
+    line-height: 33px;
+}
+.SuperMonthPicker[data-theme="semantic"] .SMPChangeYear .SMPLeft .arrow,
+.SuperMonthPicker[data-theme="semantic"] .SMPChangeYear .SMPRight .arrow {
+    border-color: #707070;
+}
+.SuperMonthPicker[data-theme="semantic"] .SMPButtons {
+    margin: 0 0 10px;
+    border-top: 1px solid #ebebeb;
+    padding: 10px 10px 0;
+}
+.SuperMonthPicker[data-theme="semantic"] .SMPButtons button {
+    border-radius: .28571429rem;
+    background: #009c95;
+    border: 0;
+}
+.SuperMonthPicker[data-theme="semantic"] .SMPButtons button:hover {
+    background: #009c95;
+}
+
+/** bulma **/
+.SuperMonthPicker[data-theme="bulma"] .SMPContainer {
+    font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    border: 1px solid rgba(10,10,10,.1);
+    box-shadow: none;
+    padding-top: 0px;
+}
+.SuperMonthPicker[data-theme="bulma"] .SMPChangeYear {
+    box-shadow: 0 1px 2px rgba(10,10,10,.1);
+}
+
+.SuperMonthPicker[data-theme="bulma"] .SMPChangeMonth > div:hover {
+    color: #2366d1;
+}
+.SuperMonthPicker[data-theme="bulma"] .SMPChangeMonth > div.active {
+    border-radius: 4px;
+    color: #fff;
+    background: #2366d1;
+}
+.SuperMonthPicker[data-theme="bulma"] .SMPChangeYear .SMPLeft .arrow,
+.SuperMonthPicker[data-theme="bulma"] .SMPChangeYear .SMPRight .arrow {
+    border-color: #707070;
+}
+.SuperMonthPicker[data-theme="bulma"] .SMPButtons button {
+    border-radius: 4px;
+    background: #2366d1;
+    border: 0;
+}
+.SuperMonthPicker[data-theme="bulma"] .SMPButtons button:hover {
+    background: #276cda;
+}

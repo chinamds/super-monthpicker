@@ -11,6 +11,7 @@ $(document).ready(function () {
 				 + '			          	More plugins'
 				 + '			        </a>'
 				 + '			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">'
+				 + '			            <a class="dropdown-item" href="http://markusslima.github.io/bootstrap-filestyle/">Bootstrap FileStyle</a>'
 				 + '			            <a class="dropdown-item" href="http://markusslima.github.io/jquery-filestyle/">jQuery FileStyle</a>'
 				 + '					    <a class="dropdown-item" href="http://markusslima.github.io/easy-z-modal/">Easy-Z modal</a>'
 				 + '					    <a class="dropdown-item" href="http://markusslima.github.io/bird-alert/">Bird Alert</a>'
@@ -61,6 +62,14 @@ $(document).ready(function () {
 				   + '	</div>'
 				   + '</div>'
 	$('header').html(htmlHeader);
+
+	$('body').append('<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42464483-6"></script>'+
+		'<script>'+
+		'	window.dataLayer = window.dataLayer || [];'+
+		'	function gtag(){dataLayer.push(arguments);}'+
+		'	gtag(\'js\', new Date());'+
+		'	gtag(\'config\', \'UA-42464483-6\');'+
+		'</script>');
 
 	var d = new Date();
 	$('#ano').html(d.getFullYear());

@@ -5,13 +5,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Bootstrap Filestyle 2 - jQuery Customization of input html file for Bootstrap Twitter</title>
+		<title>Super Month Picker - The super month picker is a fantastic plugin for choosing months and years</title>
 
 		<link rel="icon" type="image/png" href="icons/favicon.png">
 		<link href="css/prism.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Dancing+Script|EB+Garamond|Oswald:400|Raleway:300" rel="stylesheet">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link href="css/super-monthpicker.min.css" rel="stylesheet">
 		<link href="css/doc.css" rel="stylesheet">
 		<link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
@@ -51,109 +52,108 @@
 							<h1>Methods</h1>
 							<hr>
 						</div>
-
 						<br>
-						<h3>dragdrop <small>Enable or disabled drag and drop selected files</small></h3>
-						<div class="alert alert-warning" role="alert">
-						  	When enabling the drag and drop event multiple file selection is enabled. That is, you can not limit the amount of uploaded files in your upload using drag and drop.
-						</div>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('dragdrop');
-// set
-$(":file").filestyle('dragdrop', false);
-</code></pre>
-
-						<br>
-						<h3>clear <small>Clear selected files</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('clear');
-</code></pre>
-
-						<br>
-						<h3>destroy <small>Destroy a filestyle completely</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('destroy');
-</code></pre>
-
-						<br>
-						<h3>disabled <small>Disabled a filestyle</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('disabled');
-// set
-$(":file").filestyle('disabled', true);
-</code></pre>
-
-						<br>
-						<h3>input <small>Set or get the value of the input option</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('input');
-// set
-$(":file").filestyle('input', false);
-</code></pre>
-
-						<br>
-						<h3>htmlIcon <small>Set or get the value of the icon option</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('htmlIcon');
-// set
-$(":file").filestyle('htmlIcon', '&lt;span class="oi oi-random"&gt;&lt;/span&gt;');
-</code></pre>
-
-						<br>
-						<h3>text <small>Set or get the text of the button</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('text');
-// set
-$(":file").filestyle('text', 'Loading...');
-</code></pre>
-
-						<br>
-						<h3>btnClass <small>Set or get the class of the button</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('btnClass');
-// set
-$(":file").filestyle('btnClass', 'btn-danger'};
-</code></pre>
-
-						<br>
-						<h3>size <small>Set or get the class of the input text</small></h3>
-<pre><code class="language-javascript">// get
-$(:file").filestyle('size');
-// set
-$(:file").filestyle('size', 'lg');
-</code></pre>
-
-						<br>
-						<h3>badge <small>Set or get boolean</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('badge');
-// set
-$(":file").filestyle('badge', true);
-</code></pre>
-
-						<br>
-						<h3>badgeName <small>Set or get the class of the badge count</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('badgeName');
-<span class="com">// set</span>
-$(":file").filestyle('badgeName', 'badge-danger');
-</code></pre>
-
-						<br>
-						<h3>buttonBefore <small>Set or get button position</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('buttonBefore');
-<span class="com">// set</span>
-$(":file").filestyle('buttonBefore', true);
-</code></pre>
+						<h3>get <small>Get the valuet</small></h3>
+<pre><code class="language-javascript">$("input").sMonthPicker('get');
+</code></pre>			
 						
 						<br>
-						<h3>placeholder <small>Set or get placeholder text</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle('placeholder');
-<span class="com">// set</span>
-$(":file").filestyle('placeholder', 'My file text');
+						<h3>reset <small>Restore initial configurations</small></h3>
+<pre><code class="language-javascript">$("input").sMonthPicker('reset');
 </code></pre>
+
+						<br>
+						<h3>destroy <small>Destroy a Super Month Picker completely</small></h3>
+<pre><code class="language-javascript">$("input").sMonthPicker('destroy');
+</code></pre>
+
+						<br>
+						<h3>disabled <small>Disabled a Super Month Picker</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('disabled');
+// set
+$("input").sMonthPicker('disabled', true);
+</code></pre>
+
+						<br>
+						<h3>startDate <small>Set or get the value of the startDate</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('startDate');
+// set
+$("input").sMonthPicker('startDate', false);
+</code></pre>
+
+						<br>
+						<h3>endDate <small>Set or get the value of the endDate</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('endDate');
+// set
+$("input").sMonthPicker('endDate', new Date());
+</code></pre>
+
+						<br>
+						<h3>monthsName <small>Set or get the value of the monthsName</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('monthsName');
+// set
+$("input").sMonthPicker('monthsName', ['Jan', 'Fev', 'Mar', ..., 'Nov', 'Dez']);
+</code></pre>
+
+						<br>
+						<h3>min <small>Set or get the value of the min</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('min');
+// set
+$("input").sMonthPicker('min', '01-2018');
+</code></pre>
+
+						<br>
+						<h3>max <small>Set or get the value of the max</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('max');
+// set
+$("input").sMonthPicker('max', '11-2018');
+</code></pre>
+
+						<br>
+						<h3>changeMonth <small>Set or get the value of the changeMonth</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('changeMonth');
+// set
+$("input").sMonthPicker('changeMonth', false);
+</code></pre>
+
+						<br>
+						<h3>changeYear <small>Set or get the value of the changeYear</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('changeYear');
+// set
+$("input").sMonthPicker('changeYear', false);
+</code></pre>
+
+						<br>
+						<h3>btnOk <small>Set or get the value of the btnOk</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('btnOk');
+// set
+$("input").sMonthPicker('btnOk', 'Test ok');
+</code></pre>
+
+						<br>
+						<h3>btnCancel <small>Set or get the value of the btnCancel</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('btnCancel');
+// set
+$("input").sMonthPicker('btnCancel', 'Close');
+</code></pre>
+
+						<br>
+						<h3>theme <small>Set or get the value of the theme</small></h3>
+<pre><code class="language-javascript">// get
+$("input").sMonthPicker('theme');
+// set
+$("input").sMonthPicker('theme', 'uikit');
+</code></pre>		
 					</section>
 					<section>
 						<br>
@@ -177,24 +177,8 @@ $(":file").filestyle('placeholder', 'My file text');
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
+		<script type="text/javascript" src="js/super-monthpicker.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/prism.js"></script>
 		<script type="text/javascript" src="js/inc.js"></script>
-		<script>
-			(function(i, s, o, g, r, a, m) {
-				i['GoogleAnalyticsObject'] = r;
-				i[r] = i[r] ||
-				function() {
-					(i[r].q = i[r].q || []).push(arguments)
-				}, i[r].l = 1 * new Date();
-				a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-				a.async = 1;
-				a.src = g;
-				m.parentNode.insertBefore(a, m)
-			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-			ga('create', 'UA-42464483-1', 'markusslima.github.io');
-			ga('send', 'pageview');
-		</script>
 	</body>
 </html>

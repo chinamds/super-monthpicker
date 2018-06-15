@@ -1,3 +1,12 @@
+/*
+ * Super Month Picker
+ * doc: http://markusslima.github.io/super-monthpicker/
+ * github: https://github.com/markusslima/super-monthpicker
+ *
+ * Copyright (c) 2018 Markus Vinicius da Silva Lima
+ * Version 1.0.0
+ * Licensed under the MIT license.
+ */
 .SuperMonthPicker {
     display: inline-block;
     position: relative;
@@ -382,7 +391,7 @@
 .SuperMonthPicker[data-theme="bulma"] .SMPChangeMonth > div.active {
     border-radius: 4px;
     color: #fff;
-    background: #2366d1;
+    background: #00d1b2;
 }
 .SuperMonthPicker[data-theme="bulma"] .SMPChangeYear .SMPLeft .arrow,
 .SuperMonthPicker[data-theme="bulma"] .SMPChangeYear .SMPRight .arrow {
@@ -390,9 +399,84 @@
 }
 .SuperMonthPicker[data-theme="bulma"] .SMPButtons button {
     border-radius: 4px;
-    background: #2366d1;
+    background: #00d1b2;
     border: 0;
 }
 .SuperMonthPicker[data-theme="bulma"] .SMPButtons button:hover {
-    background: #276cda;
+    background: #00c4a7;
+}
+
+/** siimple **/
+.SuperMonthPicker[data-theme="siimple"] .SMPContainer {
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid #ebf2fa;
+    box-shadow: none;
+    color: #777;
+}
+.SuperMonthPicker[data-theme="siimple"] .SMPChangeMonth > div:hover {
+    color: #57607c;
+}
+.SuperMonthPicker[data-theme="siimple"] .SMPChangeMonth > div.active {
+    border-radius: 5px;
+    color: #fff;
+    background: #57607c;
+    font-weight: bold;
+}
+.SuperMonthPicker[data-theme="siimple"] .SMPChangeYear .SMPLeft .arrow,
+.SuperMonthPicker[data-theme="siimple"] .SMPChangeYear .SMPRight .arrow {
+    border-color: #707070;
+}
+.SuperMonthPicker[data-theme="siimple"] .SMPButtons {
+    margin: 0;
+    border-top: 1px solid #ebebeb;
+    padding: 10px;
+    background: #ebf2fa;
+}
+.SuperMonthPicker[data-theme="siimple"] .SMPButtons button {
+    border-radius: 5px;
+    background: #57607c;
+    border: 0;
+    font-weight: bold;
+}
+.SuperMonthPicker[data-theme="siimple"] .SMPButtons button:hover {
+    opacity: 0.8;
+}
+
+/** uikit **/
+.SuperMonthPicker[data-theme="uikit"] .SMPContainer {
+    font-family: ProximaNova,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    box-shadow: none;
+    color: #777;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    background: #fff;
+}
+.SuperMonthPicker[data-theme="uikit"] .SMPChangeYear {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.SuperMonthPicker[data-theme="uikit"] .SMPChangeMonth > div:hover {
+    color: #57607c;
+}
+.SuperMonthPicker[data-theme="uikit"] .SMPChangeMonth > div.active {
+    border-radius: 0;
+    color: #fff;
+    background: #0e6dcd;
+}
+.SuperMonthPicker[data-theme="uikit"] .SMPChangeYear .SMPLeft .arrow,
+.SuperMonthPicker[data-theme="uikit"] .SMPChangeYear .SMPRight .arrow {
+    border-color: #707070;
+}
+.SuperMonthPicker[data-theme="uikit"] .SMPButtons {
+    margin: 0;
+    border-top: 1px solid #e5e5e5;
+    padding: 20px 15px; 
+}
+.SuperMonthPicker[data-theme="uikit"] .SMPButtons button {
+    border-radius: 0;
+    background: #0e6dcd;
+    border: 0;
+    text-transform: uppercase;
+}
+.SuperMonthPicker[data-theme="uikit"] .SMPButtons button:hover {
+    background: #0e6dcd;
 }

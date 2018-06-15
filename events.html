@@ -5,13 +5,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Bootstrap Filestyle 2 - jQuery Customization of input html file for Bootstrap Twitter</title>
+		<title>Super Month Picker - The super month picker is a fantastic plugin for choosing months and years</title>
 
 		<link rel="icon" type="image/png" href="icons/favicon.png">
 		<link href="css/prism.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Dancing+Script|EB+Garamond|Oswald:400|Raleway:300" rel="stylesheet">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link href="css/super-monthpicker.min.css" rel="stylesheet">
 		<link href="css/doc.css" rel="stylesheet">
 		<link href="open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
@@ -34,7 +35,7 @@
 						     data-ad-layout="in-article"
 						     data-ad-format="fluid"
 						     data-ad-client="ca-pub-8894792596723869"
-						     data-ad-slot="3091927469"></ins>
+						     data-ad-slot="4872434413"></ins>
 						<script>
 						     (adsbygoogle = window.adsbygoogle || []).push({});
 						</script>
@@ -51,14 +52,87 @@
 							<h1>Events</h1>
 							<hr>
 						</div>
-						<h3>onChange <small>Execute function after change</small></h3>
-<pre><code class="language-javascript">// get
-$(":file").filestyle({
-   'onChange': function (files) {
-      console.log(files)
-   }
+						<br>
+						<h3>onSelectMonth <small>Execute function after selecting a month</small></h3>
+<pre><code class="language-javascript">//SET
+$("input").sMonthPicker({
+   'onSelectMonth': function () {}
 });
+$("input").sMonthPicker('onSelectMonth', function () {});
+
+// GET
+$("input").sMonthPicker('onSelectMonth');
 </code></pre>
+
+						<br>
+						<h3>onSelectYear <small>Execute function after selecting a year</small></h3>
+<pre><code class="language-javascript">//SET
+$("input").sMonthPicker({
+   'onSelectYear': function () {}
+});
+$("input").sMonthPicker('onSelectYear', function () {});
+
+// GET
+$("input").sMonthPicker('onSelectYear');
+</code></pre>
+						<br>
+						<h3>onOpen <small>Execute function after open month picker</small></h3>
+<pre><code class="language-javascript">//SET
+$("input").sMonthPicker({
+   'onOpen': function () {}
+});
+$("input").sMonthPicker('onOpen', function () {});
+
+// GET
+$("input").sMonthPicker('onOpen');
+</code></pre>
+						<br>
+						<br>
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<ins class="adsbygoogle"
+						     style="display:block; text-align:center;"
+						     data-ad-layout="in-article"
+						     data-ad-format="fluid"
+						     data-ad-client="ca-pub-8894792596723869"
+						     data-ad-slot="4872434413"></ins>
+						<script>
+						     (adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+						<br>
+						<br>
+						<h3>onClose <small>Execute function after closed month picker</small></h3>
+<pre><code class="language-javascript">//SET
+$("input").sMonthPicker({
+   'onClose': function () {}
+});
+$("input").sMonthPicker('onClose', function () {});
+
+// GET
+$("input").sMonthPicker('onClose');
+</code></pre>
+						<br>
+						<h3>onChoose <small>Execute function after click 'Ok' button</small></h3>
+<pre><code class="language-javascript">//SET
+$("input").sMonthPicker({
+   'onChoose': function () {}
+});
+$("input").sMonthPicker('onChoose', function () {});
+
+// GET
+$("input").sMonthPicker('onChoose');
+</code></pre>
+					</section>
+					<section style="padding-top: 0">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<ins class="adsbygoogle"
+						     style="display:block; text-align:center;"
+						     data-ad-layout="in-article"
+						     data-ad-format="fluid"
+						     data-ad-client="ca-pub-8894792596723869"
+						     data-ad-slot="4872434413"></ins>
+						<script>
+						     (adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
 					</section>
 					<br>
 					<br>
@@ -69,29 +143,8 @@ $(":file").filestyle({
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
+		<script type="text/javascript" src="js/super-monthpicker.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/prism.js"></script>
 		<script type="text/javascript" src="js/inc.js"></script>
-		<script>
-			(function(i, s, o, g, r, a, m) {
-				i['GoogleAnalyticsObject'] = r;
-				i[r] = i[r] ||
-				function() {
-					(i[r].q = i[r].q || []).push(arguments)
-				}, i[r].l = 1 * new Date();
-				a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-				a.async = 1;
-				a.src = g;
-				m.parentNode.insertBefore(a, m)
-			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-			ga('create', 'UA-42464483-1', 'markusslima.github.io');
-			ga('send', 'pageview');
-
-			$('#inputHtmlIcon').filestyle({
-				htmlIcon: '<span class="oi oi-folder"></span> '
-			});
-		</script>
-		
 	</body>
 </html>
